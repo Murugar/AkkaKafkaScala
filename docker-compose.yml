@@ -1,0 +1,16 @@
+version: "2.0"
+services:
+  backend:
+    image: 1science/sbt
+    environment:
+      - TEST=true
+    volumes:
+      - .:/app
+      - ~/.ivy2:/root/.ivy2
+    command: sbt run
+
+  kafka:
+    image: spotify/kafka
+    ports:
+        - "2181:2181"
+        - "9092:9092"
